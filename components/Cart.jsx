@@ -60,7 +60,7 @@ export default function Cart({ cart, setCart, removeItem, products }) {
 
   return (
     <div
-      className='bg-[#D9D9D9] text-black p-4 rounded-md shadow-md max-w-2xl mx-auto'
+      className='bg-[#D9D9D9] text-black p-4 rounded-md shadow-md max-w-xl mx-auto'
       id='cart'
     >
       <h3 className='text-lg font-bold mb-4'>Корзина</h3>
@@ -83,7 +83,7 @@ export default function Cart({ cart, setCart, removeItem, products }) {
 
                   <button
                     onClick={() => removeItem(item.id)}
-                    className='text-red-500 ml-auto'
+                    className='text-red-500 ml-auto cursor-pointer'
                   >
                     Удалить
                   </button>
@@ -115,7 +115,7 @@ export default function Cart({ cart, setCart, removeItem, products }) {
       <button
         onClick={handleOrder}
         disabled={loading}
-        className='mt-4 w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 disabled:opacity-50'
+        className='mt-4 w-full bg-[#222222] text-white py-2 rounded hover:bg-[#393939] cursor-pointer disabled:opacity-50'
       >
         {loading ? 'Оформляем...' : 'Заказать'}
       </button>

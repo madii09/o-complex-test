@@ -1,16 +1,16 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
-import Cart from './Cart';
 import Header from './Header';
-import ProductCard from './ProductCard';
-import ProductSkeleton from './ProductSkeleton';
 import Review from './Review';
 import { ReviewSkeleton } from './ReviewSkeleton';
+import Cart from './Cart';
+import ProductCard from './ProductCard';
+import ProductSkeleton from './ProductSkeleton';
 
 export default function Home({ initialProducts = [] }) {
   const [products, setProducts] = useState(initialProducts || []);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(2);
   const [hasMore, setHasMore] = useState(true);
   const [loading, setLoading] = useState(false);
 
@@ -41,7 +41,13 @@ export default function Home({ initialProducts = [] }) {
       `http://o-complex.com:1337/products?page=${pageNum}&page_size=20`
     );
     const data = await res.json();
-    setProducts((prev) => [...prev, ...data.items]);
+
+    setProducts((prev) => {
+      const combined = [...prev, ...data.items];
+      const uniqueMap = new Map();
+      combined.forEach((item) => uniqueMap.set(item.id, item));
+      return Array.from(uniqueMap.values());
+    });
     if (data.items.length < 20) setHasMore(false);
     setLoading(false);
   };

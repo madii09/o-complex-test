@@ -25,7 +25,7 @@ export default function ProductCard({
   };
 
   return (
-    <div className='flex flex-col border rounded-xl p-4 shadow-sm hover:shadow-md transition bg-white text-black w-full sm:max-w-xs'>
+    <div className='flex flex-col border rounded-xl p-4 shadow-sm hover:shadow-md transition bg-[#D9D9D9] text-black w-full sm:max-w-xs'>
       <img
         src={product.image_url}
         alt={product.title}
@@ -37,14 +37,14 @@ export default function ProductCard({
       <p className='text-sm text-gray-600 mt-1 line-clamp-2'>
         {product.description}
       </p>
-      <div className='mt-2 font-bold text-blue-600 text-sm sm:text-base'>
+      <div className='mt-2 font-bold text-black text-sm sm:text-base'>
         {product.price} ₽
       </div>
 
       {!cartItem ? (
         <button
           onClick={() => addToCart(product)}
-          className='mt-3 w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition'
+          className='mt-3 w-full bg-[#222] text-white px-4 py-2 rounded hover:bg-[#393939] cursor-pointer transition'
           aria-label='Купить товар'
         >
           Купить
